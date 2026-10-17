@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: api-clima
+
+  mongodb:
+    uri: mongodb://localhost:27017/api_clima_db
+
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 5000
+            readTimeout: 5000
+            loggerLevel: basic
+
+open-weather:
+  api-key: ${OPEN_WEATHER_API_KEY}
