@@ -26,4 +26,19 @@ public class WeatherExceptionHandler {
 
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(FeignException.class)
+    public ResponseEntity<Object> handleGenericFeignException(FeignException e) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now());
+        body.put("status", e.status());
+        body.put("error", "Erro de comunicação com o serviço externo");
+
+        HttpStatus status = HttpStatus.resolve(e.status());
+        if (status == null) {
+            status = HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+
+        return new ResponseEntity<>(body, status);
+    }
 }
