@@ -69,7 +69,8 @@ Este projeto foi estruturado para contemplar os principais requisitos esperados 
 
 ## 🏗️ Arquitetura
 
-A aplicação foi organizada em camadas para manter a responsabilidade de cada parte do sistema bem separada:
+A arquitetura seguiu o modelo Point-to-Point, onde ela consome a OpenWeatherAPI. Além disso, 
+a aplicação foi organizada em camadas para manter a responsabilidade de cada parte do sistema bem separada:
 - **Controller:** expõe os endpoints HTTP;
 - **Service:** orquestra a lógica de negócio;
 - **Client/Integration (Feign):** realiza a comunicação com a API externa;
